@@ -9,29 +9,29 @@ used by [Luvit](http://luvit.io/), [Julia](http://julialang.org/),
 
 ## Feature highlights
 
- * Full-featured event loop backed by epoll, kqueue, IOCP, event ports.
+* Full-featured event loop backed by epoll, kqueue, IOCP, event ports.
 
- * Asynchronous TCP and UDP sockets
+* Asynchronous TCP and UDP sockets
 
- * Asynchronous DNS resolution
+* Asynchronous DNS resolution
 
- * Asynchronous file and file system operations
+* Asynchronous file and file system operations
 
- * File system events
+* File system events
 
- * ANSI escape code controlled TTY
+* ANSI escape code controlled TTY
 
- * IPC with socket sharing, using Unix domain sockets or named pipes (Windows)
+* IPC with socket sharing, using Unix domain sockets or named pipes (Windows)
 
- * Child processes
+* Child processes
 
- * Thread pool
+* Thread pool
 
- * Signal handling
+* Signal handling
 
- * High resolution clock
+* High resolution clock
 
- * Threading and synchronization primitives
+* Threading and synchronization primitives
 
 ## Versioning
 
@@ -48,9 +48,9 @@ The documentation is licensed under the CC BY 4.0 license. Check the [LICENSE-do
 
 ## Community
 
- * [Support](https://github.com/libuv/help)
- * [Mailing list](http://groups.google.com/group/libuv)
- * [IRC chatroom (#libuv@irc.freenode.org)](http://webchat.freenode.net?channels=libuv&uio=d4)
+* [Support](https://github.com/libuv/help)
+* [Mailing list](http://groups.google.com/group/libuv)
+* [IRC chatroom (#libuv@irc.freenode.org)](http://webchat.freenode.net?channels=libuv&uio=d4)
 
 ## Documentation
 
@@ -63,32 +63,32 @@ formats.
 Show different supported building options:
 
 ```bash
-$ make help
+make help
 ```
 
 Build documentation as HTML:
 
 ```bash
-$ make html
+make html
 ```
 
 Build documentation as HTML and live reload it when it changes (this requires
 sphinx-autobuild to be installed and is only supported on Unix):
 
 ```bash
-$ make livehtml
+make livehtml
 ```
 
 Build documentation as man pages:
 
 ```bash
-$ make man
+make man
 ```
 
 Build documentation as ePub:
 
 ```bash
-$ make epub
+make epub
 ```
 
 NOTE: Windows users need to use make.bat instead of plain 'make'.
@@ -100,11 +100,11 @@ also serve as API specification and usage examples.
 
 ### Other resources
 
- * [LXJS 2012 talk](http://www.youtube.com/watch?v=nGn60vDSxQ4)
+* [LXJS 2012 talk](http://www.youtube.com/watch?v=nGn60vDSxQ4)
    &mdash; High-level introductory talk about libuv.
- * [libuv-dox](https://github.com/thlorenz/libuv-dox)
+* [libuv-dox](https://github.com/thlorenz/libuv-dox)
    &mdash; Documenting types and methods of libuv, mostly by reading uv.h.
- * [learnuv](https://github.com/thlorenz/learnuv)
+* [learnuv](https://github.com/thlorenz/learnuv)
    &mdash; Learn uv for fun and profit, a self guided workshop to libuv.
 
 These resources are not handled by libuv maintainers and might be out of
@@ -127,13 +127,13 @@ file, but are also available as git blob objects for easier use.
 Importing a key the usual way:
 
 ```bash
-$ gpg --keyserver pool.sks-keyservers.net --recv-keys AE9BC059
+gpg --keyserver pool.sks-keyservers.net --recv-keys AE9BC059
 ```
 
 Importing a key from a git blob object:
 
 ```bash
-$ git show pubkey-saghul | gpg --import
+git show pubkey-saghul | gpg --import
 ```
 
 ### Verifying releases
@@ -141,7 +141,7 @@ $ git show pubkey-saghul | gpg --import
 Git tags are signed with the developer's key, they can be verified as follows:
 
 ```bash
-$ git verify-tag v1.6.1
+git verify-tag v1.6.1
 ```
 
 Starting with libuv 1.7.0, the tarballs stored in the
@@ -150,7 +150,7 @@ signature file sit alongside each. Once both the release tarball and the
 signature file are downloaded, the file can be verified as follows:
 
 ```bash
-$ gpg --verify libuv-1.7.0.tar.gz.sign
+gpg --verify libuv-1.7.0.tar.gz.sign
 ```
 
 ## Build Instructions
@@ -162,11 +162,11 @@ backends. It is best used for integration into other projects.
 To build with autotools:
 
 ```bash
-$ sh autogen.sh
-$ ./configure
-$ make
-$ make check
-$ make install
+sh autogen.sh
+./configure
+make
+make check
+make install
 ```
 
 ### Windows
@@ -221,21 +221,20 @@ Examples:
   vcbuild.bat release bench: builds release build and runs benchmarks
 ```
 
-
 ### Unix
 
 For Debug builds (recommended) run:
 
 ```bash
-$ ./gyp_uv.py -f make
-$ make -C out
+./gyp_uv.py -f make
+make -C out
 ```
 
 For Release builds run:
 
 ```bash
-$ ./gyp_uv.py -f make
-$ BUILDTYPE=Release make -C out
+./gyp_uv.py -f make
+BUILDTYPE=Release make -C out
 ```
 
 Run `./gyp_uv.py -f make -Dtarget_arch=x32` to build [x32][] binaries.
@@ -245,15 +244,15 @@ Run `./gyp_uv.py -f make -Dtarget_arch=x32` to build [x32][] binaries.
 Run:
 
 ```bash
-$ ./gyp_uv.py -f xcode
-$ xcodebuild -ARCHS="x86_64" -project uv.xcodeproj \
+./gyp_uv.py -f xcode
+xcodebuild -ARCHS="x86_64" -project uv.xcodeproj \
      -configuration Release -target All
 ```
 
 Using Homebrew:
 
 ```bash
-$ brew install --HEAD libuv
+brew install --HEAD libuv
 ```
 
 Note to OS X users:
@@ -267,15 +266,15 @@ Make sure that you specify the architecture you wish to build for in the
 Run:
 
 ```bash
-$ source ./android-configure NDK_PATH gyp [API_LEVEL]
-$ make -C out
+source ./android-configure NDK_PATH gyp [API_LEVEL]
+make -C out
 ```
 
 The default API level is 24, but a different one can be selected as follows:
 
 ```bash
-$ source ./android-configure ~/android-ndk-r15b gyp 21
-$ make -C out
+source ./android-configure ~/android-ndk-r15b gyp 21
+make -C out
 ```
 
 Note for UNIX users: compile your project with `-D_LARGEFILE_SOURCE` and
@@ -286,20 +285,19 @@ Note for UNIX users: compile your project with `-D_LARGEFILE_SOURCE` and
 To use ninja for build on ninja supported platforms, run:
 
 ```bash
-$ ./gyp_uv.py -f ninja
-$ ninja -C out/Debug     #for debug build OR
-$ ninja -C out/Release
+./gyp_uv.py -f ninja
+ninja -C out/Debug     #for debug build OR
+ninja -C out/Release
 ```
-
 
 ### Running tests
 
 Run:
 
 ```bash
-$ ./gyp_uv.py -f make
-$ make -C out
-$ ./out/Debug/run-tests
+./gyp_uv.py -f make
+make -C out
+./out/Debug/run-tests
 ```
 
 ## Supported Platforms

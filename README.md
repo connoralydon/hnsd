@@ -81,7 +81,7 @@ the source repo.
 ### OSX
 
 ``` sh
-$ brew install git automake autoconf libtool unbound
+brew install git automake autoconf libtool unbound
 ```
 
 ### Linux
@@ -97,7 +97,7 @@ You can install these dependencies on any Ubuntu/Debian style linux using
 Windows builds are made natively with MSYS2 / MinGW.  This uses the MinGW
 libunbound and OpenSSL packages provided by MSYS2.
 
-1. Install MSYS2 from https://www.msys2.org - follow the instructions on that page
+1. Install MSYS2 from <https://www.msys2.org> - follow the instructions on that page
 2. Install dependencies - do one of the following in an MSYS2 shell
    - x86_64: `pacman -S base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-unbound mingw-w64-x86_64-crt-git`
    - x86: `pacman -S base-devel mingw-w64-i686-toolchain mingw-w64-i686-unbound mingw-w64-i686-crt-git`
@@ -112,20 +112,20 @@ DLLs to the hnsd directory, etc.
 ## Cloning
 
 ``` sh
-$ git clone git://github.com/handshake-org/hnsd.git
-$ cd hnsd
+git clone git://github.com/handshake-org/hnsd.git
+cd hnsd
 ```
 
 ## Building
 
 ``` sh
-$ ./autogen.sh && ./configure && make
+./autogen.sh && ./configure && make
 ```
 
 ### Optional
 
 ``` sh
-$ sudo make install
+sudo make install
 ```
 
 ## Setup
@@ -159,13 +159,13 @@ Secondly, we need to allow our daemon to listen on low ports, without root
 access (much safer than running as root directly).
 
 ``` sh
-$ sudo setcap 'cap_net_bind_service=+ep' /path/to/hnsd
+sudo setcap 'cap_net_bind_service=+ep' /path/to/hnsd
 ```
 
 Now run with:
 
 ``` sh
-$ ./hnsd -p 4 -r 127.0.0.1:53
+./hnsd -p 4 -r 127.0.0.1:53
 ```
 
 ### Using a static resolv.conf
@@ -179,7 +179,7 @@ the culprits here.
 If you're using resolvconf, `/etc/resolvconf.conf` must be modified:
 
 ``` sh
-$ sudo vi /etc/resolvconf.conf
+sudo vi /etc/resolvconf.conf
 ```
 
 The `name_servers` field must be altered in order to truly alter your
@@ -196,7 +196,7 @@ advertised by your router (usually your ISP's nameservers). To prevent this,
 `/etc/dhcpcd.conf` must be modified:
 
 ``` sh
-$ sudo vi /etc/dhcpcd.conf
+sudo vi /etc/dhcpcd.conf
 ```
 
 In the default config, you may see a line which looks like:
@@ -218,7 +218,7 @@ tainting your resolv.conf, `/etc/NetworkManager/NetworkManager.conf` must be
 altered:
 
 ``` sh
-$ sudo vi /etc/NetworkManager/NetworkManager.conf
+sudo vi /etc/NetworkManager/NetworkManager.conf
 ```
 
 The default `NetworkManager.conf` is usually empty, but we need to add a `dns`
@@ -244,7 +244,7 @@ that will break the build inside docker. To prevent this, add this option to you
 git global configuraiton before cloning this repo:
 
 ```bash
- $ git config --global core.autocrlf input
+git config --global core.autocrlf input
  ```
 
 #### Building an image
@@ -252,7 +252,7 @@ git global configuraiton before cloning this repo:
 To build a Docker image with the name `hnsd`, run:
 
 ```bash
-$ docker build -t hnsd .
+docker build -t hnsd .
 ```
 
 #### Running a container
@@ -260,7 +260,7 @@ $ docker build -t hnsd .
 To create and run a container named `hnsd`, run:
 
 ```bash
-$ docker create \
+docker create \
   --name=hnsd \
   --publish=127.0.0.1:53:53/udp \
   --restart=unless-stopped \
@@ -268,13 +268,13 @@ $ docker create \
 ```
 
 ```bash
-$ docker start hnsd
+docker start hnsd
 ```
 
 To check the `hnsd` container if it runs correctly
 
 ```bash
-$ docker ps -a
+docker ps -a
 ```
 
 #### Stopping a container
@@ -282,28 +282,28 @@ $ docker ps -a
 To stop a container named `hnsd`, run:
 
 ```bash
-$ docker stop hnsd
+docker stop hnsd
 ```
 
 ### OpenWRT
 
-To build hnsd as an OpenWRT package you'll need to rename `openwrt_Makefile` to `Makefile` 
+To build hnsd as an OpenWRT package you'll need to rename `openwrt_Makefile` to `Makefile`
 and put it in `your_openwrt_dir/package/net/hnsd` before building.
 Then you can use your `menuconfig` and select it.  
 Or you can use this command if you want to build on your SDK this package only:
 
 ```bash
-$ make package/net/hnsd/compile V=s
+make package/net/hnsd/compile V=s
 ```
 
 Please keep in mind that `hnsd` needs `libunbound` and all of its dependencies
 such as `libsodium, libmnl, libevent2(all packs), libpthread, libnghttp2, python3-base,libprotobuf-c`
-and some of them are reqired to be installed manually. 
+and some of them are reqired to be installed manually.
 
 ## Usage
 
 ``` sh
-$ hnsd [options]
+hnsd [options]
 ```
 
 **Reccomended usage:**
